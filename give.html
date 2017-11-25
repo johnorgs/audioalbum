@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+	  <!-- Compiled and minified CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     <style type="text/css">@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600');
+body {
+  background:rgba(10,10,10,0.2);
+}
+* {
+  margin:0px;
+  padding:0px;
+  box-sizing:border-box;
+}
+.screen {
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:280px;
+  height:430px;
+  overflow:hidden;
+}
+.song-list {
+  position:fixed;
+  top:0px;
+  left:0px;
+  width:100%;
+  height:100%;
+  background:rgba(17, 17, 17, 0.95);
+  padding:0px 4px;
+  padding-top:35px;
+  z-index:10;
+  opacity:0.3;
+  transform-origin:left;
+  transform:perspective(600px) translateX(-20px) rotateY(-100deg) scale(0.65);
+  transition:all 400ms ease;
+}
+.song-list .song {
+  display:flex;
+  margin:2px 0px;
+  color:rgba(100,100,100,0.9);
+  font-size:15px;
+  font-family:"Open Sans",sans-serif;
+  line-height:32px;
+  height:32px;
+  background:#1d1d1d;
+  padding:0px 5px;
+}
+.song-list .song.active {
+  background:rgba(100,100,100,0.35);
+}
+.song-list .song.active .name {
+  color:tomato;
+}
+.song-list .song > * {
+  height:100%;
+  font-size:12px;
+  text-indent:6px;  
+}
+.song-list .song .no {
+  text-indent:8px;
+  width:25px;
+}
+.song-list .song .name {
+  font-size:12px; 
+  text-transform:uppercase;
+  color:#e7e7e7;
+  font-weight:600;
+  width:170px;
+  border-right:1px groove #111;
+  border-left:1px groove #111;
+}
+.song-list .song .artist {
+  font-size:10px;
+  flex:1;
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;   
+}
+.header {
+  position:fixed;
+  top:0px;
+  left:0px;
+  display:flex;
+  justify-content:space-between;
+  padding:10px 15px;
+  width:100%;
+  color:#e7e7e7;
+  z-index:15;
+}
+.song-banner-info {
+  height:calc(100% - 150px);
+  background: linear-gradient(rgba(0,0,30,0.35),rgba(0,0,0,0.75)), url("https://goo.gl/xNCRnd") center no-repeat;
+  background-size:cover;
+  display:flex;
+  justify-content:flex-end;
+  flex-direction:column;
+  color:#e7e7e7;
+  padding:12px;
+  font-family: 'Open Sans', sans-serif;
+}
+.song-banner-info h2 {
+  font-weight:500;
+  letter-spacing:0px;
+  font-size:20px;
+}
+.song-banner-info p {
+  margin-top:-1px;
+  font-size:12px;
+  color:rgba(230,230,230,0.6);
+  font-weight:400;
+}
+.song-controls {
+  background:rgba(10,10,10,0.98);
+  height:150px;
+  padding-top:10px;
+}
+.song-controls .row {
+  padding:15px 20px;
+}
+.song-controls .row .range {
+  width:100%;
+  height:3px;
+  background:tomato;
+}
+.song-controls .row .range:before,.song-controls .row .range:after {
+  content:"";
+  display:block;
+  width:100px;
+  height:20px;
+}
+.song-controls .row .range:before {
+  position:relative;
+  background:#e7e7e7;
+  width:4px;
+  height:13px;
+  left:80px;
+  top:-5px;
+}
+.song-controls .row .range:after {
+  width:calc(100% - 80px);
+  float:right;
+  height:3px;
+  margin-top:-13px;
+  background:gray;
+}
+.song-controls .row .times {
+  display:flex;
+  justify-content:space-between;
+  font-size:10px;
+  color:rgba(200,200,200,0.95);
+  margin-top:5px;
+  font-family:"Open Sans",sans-serif;
+}
+.song-controls .row:nth-child(2){
+  margin-top:-15px;
+  text-align:center;
+}
+.song-controls .row:nth-child(2) > * {
+  margin:0px 15px;
+  font-size:28px;
+  color:rgba(210,210,210,1);
+}
+.song-controls .bottom {
+  position:fixed;
+  bottom:0px;
+  left:0px;
+  width:100%;
+  height:40px;
+  display:flex;
+  align-items:center;
+  justify-content:space-around;
+  color:rgba(150,150,150,0.5);
+  font-size:14px;
+}
+.bottom .selected {
+  color:tomato;
+}
+
+.screen.active .song-list {
+  opacity:1;
+  transform:translateX(0px) rotateY(0deg) scale(1);
+}</style>
+</head>
+<body>
+     <div class="screen">
+  <div class="song-list" id="song-list">
+  </div>
+  <div class="header">
+    <i class="fa fa-bars" onclick="toggleSongList()"></i>
+    <i class="fa fa-volume-off"></i>
+  </div>
+  <div class="song-banner-info">
+    <h2>The Night We Met</h2>
+    <p>Lord Huron</p>
+  </div>
+  <div class="song-controls">
+    <div class="row">
+      <div class="range"></div>
+      <div class="times">
+       <span>0:00</span>
+        <span>4:17</span>
+      </div>
+    </div>
+    <div class="row">
+      <i class="fa fa-backward"></i>
+      <i class="fa fa-pause"></i>
+      <i class="fa fa-forward"></i>
+    </div>
+   
+  </div>
+</div>
+<script type="text/javascript">
+  var songList = [
+  {
+    name:"Not Afraid",
+    artist:"eminem"
+  },
+  {
+    name:"In the end",
+    artist:"Linkin Park"
+  },
+  {
+    name:"Alone",
+    artist:"Alan Walker"
+  },
+  {
+    name:"It Ain't Me",
+    artist:"Kygo, Selena Gomez"
+  },
+  {
+    name:"The night we met",
+    artist:"Lord Huron"
+  },
+  {
+    name:"Stan",
+    artist:"eminem"
+  }, 
+  {
+    name:"Attension",
+    artist:"Charlie Puth"
+  }, 
+  {
+    name:"in the name of love",
+    artist:"Martin, Rexha"
+  }, 
+  {
+    name:"Numb",
+    artist:"Linkin Park"
+  }, 
+ 
+    
+];
+
+var activeSongIndex = 4;
+var songListRef = document.getElementById("song-list");
+
+(function(){
+  var song = {};
+  for(var c=0;c< songList.length;c++){
+    song = songList[c];
+    songListRef.innerHTML += '<div class="song"><div class="no">'+(c+1)+'</div><div class="name">'+song.name+'</div><div class="artist">'+song.artist+'</div></div>';
+  }
+  document.getElementsByClassName('song')[activeSongIndex].classList.add('active');
+})();
+
+function toggleSongList(){
+  document.getElementsByClassName('screen')[0].classList.toggle('active');
+}
+</script>
+</body>
+</html>

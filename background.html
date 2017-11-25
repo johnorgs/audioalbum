@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Portfolio -John Besra</title>
+  <link rel="shortcut icon" href="peace.png"/>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Merienda" rel="stylesheet">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="lostyle.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="rule.css" rel="stylesheet" />
+    <style>
+      body {
+        overflow: hidden;
+        background-color: pink;
+        cursor:url(cursor.png), auto;
+      }
+      img
+      {
+        box-shadow: 10px 10px 5px #ccc;
+      -moz-box-shadow: 10px 10px 5px #ccc;
+      -webkit-box-shadow: 10px 10px 5px #ccc;
+      -khtml-box-shadow: 10px 10px 5px #ccc;
+      }
+     
+      #logout
+{
+  color: #FF6666;
+-webkit-transition: -webkit-transform .3s ease-in-out;
+          transition:         transform .3s ease-in-out;
+}
+#logout:hover
+{
+  color: #9999FF;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+.aa
+{
+  color: #9999FF;
+}
+.aa:hover
+{
+  color: #FF6666;
+}
+      
+    </style>
+</head>
+<body>
+ 
+ <a href="test.html"> <span  style="position: fixed;z-index: 99999;top: 50px;left: 50px;" class="aa"><span class="fa-stack fa-lg">
+                  <i class="fa fa-circle-thin fa-stack-2x "></i>
+                  <i id="logout" class="fa fa-bars fa-stack-1x"  ></i>
+                </span></span></a>
+  
+<audio hidden src="americana.mp3" id="myAudio"  controls>
+<p>If you are reading this, it is because your browser does not support the audio element.</p>
+</audio>
+<div style="position: absolute;" class="w3-center">
+    <br>
+    <div class="w3-center">
+      <span style="font-family: 'Merienda', cursive;font-size: 20px; color: #FF6666;"><b>MYMUSIC &nbsp;</b><span><i class="fa fa-anchor" aria-hidden="true"></i>&nbsp;</span><span style="font-family: 'Raleway', sans-serif;color: #9999FF;">&nbsp;<b>music</b></span></span>
+      <br>
+      <br>
+      <span style="font-family: 'Merienda', cursive;font-size: 100px;color: #FF6666;" class="header">Vol. <span style="color: #9999FF;">1</span></span>
+      <br>
+      <span style="font-family: 'Merienda', cursive;font-size: 15px; color: #FF6666;">Nov 23 , 2017</span>
+      <br><br><br>
+      <div class="w3-row w3-container">
+        <div class="w3-col s4">&nbsp;</div>
+        <div class="w3-col s4"><span style="color: #9999FF;font-family: 'Raleway', sans-serif;"><b>I’ve always imagined a playlist to be like an inner journey, a nod to my
+favourite Frenchies , as well as an
+opportunity to share my current top picks from around the world. And an
+optimum travel experience by drawing on a wealth of resources from the past,
+such as this all-time classic by Vinicius de Moraes.</b></span></div>
+        <div class="w3-col s4">&nbsp;</div>
+        
+
+      </div>
+      <br><br>
+      <span style="color: #FF6666;font-family: 'Raleway', sans-serif;">Click on menu to access the album.</span>
+      <br><br>
+      <br><br>
+      <span style="color: #FF6666;font-family: 'Raleway', sans-serif;">Scroll up to pause background music | <span style="color: #9999FF;"> Scroll down to play background Music</span></span>
+    </div>
+    
+  </div>
+<div id="demo1">
+   
+
+    <img alt="logo" src="nnn2.png"  />
+    <img alt="logo" src="nnn1.png"  />
+     
+     <img alt="logo" src="nnn4.png"  />
+     <img alt="logo" src="nnn3.png"  />
+
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="play.js"></script>
+<script src="lostyle.js"></script>
+<script>
+    var particles = {
+        dotColor: '#1ec5ee',
+        lineColor: '#0a4e90',
+        density: 20000,
+        parallax: false
+    };
+    var particleDensity;
+    var options = {
+            effectWeight: 1,
+            outerBuffer: 1.08,
+            elementDepth: 200,
+            perspectiveMulti: 1.5,
+            enableSmoothing: true,
+            onInit: function() {
+              $('#particle-target').particleground(particles);
+            }
+        };
+
+    $('#min-max-tag').click(function(){
+      if ($('#demo-menu').hasClass('closed')) {
+        $('#demo-menu').removeClass('closed').addClass('open');
+      } else {
+        $('#demo-menu').removeClass('open').addClass('closed');
+      }
+    });
+
+    $(document).ready(function() {
+
+      $('#demo1').logosDistort(options);
+
+    });
+</script>
+<script type="text/javascript">
+    window.onload=function()
+      {
+        var myAudio = document.getElementById("myAudio");
+        myAudio.play();
+        
+        $('html').on('mousewheel',function(e)
+        {
+          var delta=e.originalEvent.wheelDelta;
+          if (delta<0)
+          {
+            myAudio.pause();
+          }
+          else
+          {
+             myAudio.play();
+          }
+        });
+      };
+      
+    
+    
+    
+    
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+	  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	  <title>Device detect</title>
+	  <link rel="shortcut icon" href="peace.png"/>
+	  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style type="text/css">
+		@import url(https://fonts.googleapis.com/css?family=Ruda:400,900);
+body{
+
+    background-color: #f1c40f;
+    -webkit-animation: color 5s ease-in  0s infinite alternate running;
+    -moz-animation: color 5s linear  0s infinite alternate running;
+    animation: color 5s linear  0s infinite alternate running;
+}
+
+@-webkit-keyframes color {
+    0% { background-color: #f1c40f; }
+    32% { background-color: #e74c3c; }
+    55% { background-color: #9b59b6; }
+    76% { background-color: #16a085; }
+    100% { background-color: #2ecc71; }
+}
+@-moz-keyframes color {
+     0% { background-color: #f1c40f; }
+    32% { background-color: #e74c3c; }
+    55% { background-color: #9b59b6; }
+    76% { background-color: #16a085; }
+    100% { background-color: #2ecc71; }
+}
+@keyframes color {
+  0% { background-color: #f1c40f; }
+    32% { background-color: #e74c3c; }
+    55% { background-color: #9b59b6; }
+    76% { background-color: #16a085; }
+    100% { background-color: #2ecc71; }
+}
+
+::selection
+{
+ -webkit-text-stroke: 1px #000;
+ -webkit-text-fill-color: transparent;
+
+}
+
+h1 {
+  width: 100%;
+  text-align: center;
+  letter-spacing: 0.02em;
+  margin: 2em 0;
+}
+
+
+.link {
+  display: inline-block;
+  vertical-align: top;
+  width: 100px;
+  height: 34px;
+  line-height: 36px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  letter-spacing: 0.1em;
+  text-align: center;
+  font-size: 0.8rem;
+  margin: 10px;
+  position: relative;
+}
+.link span {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  text-align: center;
+}
+
+.wipe, .slide, .opacity {
+  border: 2px solid #fff;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.opacity {
+  -webkit-transition: background-color 0.3s linear, color 0.3s linear;
+  transition: background-color 0.3s linear, color 0.3s linear;
+  background: rgba(255, 255, 255, 0);
+}
+.opacity:hover {
+  color: #124a58;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.wipe {
+  -webkit-transition: color 0.3s ease-out;
+  transition: color 0.3s ease-out;
+}
+.wipe::after {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-color: #fff;
+  content: " ";
+  position: absolute;
+  top: 0;
+  -webkit-transition: -webkit-transform 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: -webkit-transform 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: transform 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: transform 0.2s cubic-bezier(0.215, 0.61, 0.355, 1), -webkit-transform 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -webkit-transform: translateY(34px);
+          transform: translateY(34px);
+  z-index: -1;
+}
+.wipe:hover {
+  color: #124a58;
+}
+.wipe:hover::after {
+  -webkit-transform: translateY(0px);
+          transform: translateY(0px);
+}
+
+.underline {
+  border: 2px solid transparent;
+}
+.underline::after {
+  width: 0%;
+  height: 2px;
+  display: block;
+  background-color: #fff;
+  content: " ";
+  position: absolute;
+  top: 34px;
+  left: 50%;
+  -webkit-transition: left 0.2s cubic-bezier(0.215, 0.61, 0.355, 1), width 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: left 0.2s cubic-bezier(0.215, 0.61, 0.355, 1), width 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.underline:hover::after {
+  width: 100%;
+  height: 2px;
+  display: block;
+  background-color: #fff;
+  content: " ";
+  position: absolute;
+  top: 34px;
+  left: 0;
+}
+
+	</style>
+</head>
+<body>
+	<div class="startingScreen" hidden>
+		<div class="w3-center" style="color: white;">
+			<h1 style="color: white;">Terms and Conditions</h1>
+			<div class="w3-row">
+				<div class="w3-col s12 m4">&nbsp;</div>
+				<div class="w3-col s12 m4"><hr></div>
+				<div class="w3-col s12 m4">&nbsp;</div>
+			</div> 
+			<p>Downloading of audio from this website is prohibited.</p>
+			<a class="link wipe" href="background.html">I agree</a>
+			<br>
+
+			<p>Works best on Chrome</p>
+		</div>
+	</div>
+	<div  class="not" hidden>
+		<div class="w3-center" style="color: white;">
+			<h1 style="color: white;">Error</h1>
+			<div class="w3-row">
+				<div class="w3-col s12 m4">&nbsp;</div>
+				<div class="w3-col s12 m4"><hr></div>
+				<div class="w3-col s12 m4">&nbsp;</div>
+			</div> 
+			<h1>Sorry device not supported.</h1>
+			
+			<br>
+
+			<p>Works best on Chrome in Desktop</p>
+		</div>
+	</div>
+	<script type="text/javascript">
+		if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+ 			$('.not').fadeIn();
+		}
+		else
+		{
+			$('.startingScreen').fadeIn();
+		}
+	</script>
+</body>
+</html>

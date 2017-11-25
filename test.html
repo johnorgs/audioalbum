@@ -1,0 +1,1596 @@
+<!DOCTYPE html>
+<html>
+<head>
+	  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	  <title>Music Player</title>
+	  <link rel="shortcut icon" href="peace.png"/>
+	  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style type="text/css">
+		/* PRESS THE MENU BUTTON FOR ANIMATION */
+/* PRESS PLAY BUTTON TO LISTEN THE DEMO SONG */
+
+
+
+/* THANK YOU! */
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+
+body {
+  background: #ff564c;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+@keyframes harlem {
+  0% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    -ms-transform: scale(1);
+  }
+  20% {
+    transform: scale(1.03, 1);
+    -webkit-transform: scale(1.03, 1);
+    -moz-transform: scale(1.03, 1);
+    -o-transform: scale(1.03, 1);
+    -ms-transform: scale(1.03, 1);
+  }
+  40% {
+    transform: scale(0.97, 1);
+    -webkit-transform: scale(0.97, 1);
+    -moz-transform: scale(0.97, 1);
+    -o-transform: scale(0.97, 1);
+    -ms-transform: scale(0.97, 1);
+  }
+  60% {
+    transform: scale(1.01, 1);
+    -webkit-transform: scale(1.01, 1);
+    -moz-transform: scale(1.01, 1);
+    -o-transform: scale(1.01, 1);
+    -ms-transform: scale(1.01, 1);
+  }
+  80% {
+    transform: scale(0.99, 1);
+    -webkit-transform: scale(0.99, 1);
+    -moz-transform: scale(0.99, 1);
+    -o-transform: scale(0.99, 1);
+    -ms-transform: scale(0.99, 1);
+  }
+  100% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    -ms-transform: scale(1);
+  }
+}
+
+h2 {
+  margin: 0;
+  padding: 0;
+  font-size: 10px;
+  line-height: 10px;
+  letter-spacing: 2.5px;
+  font-family: 'Open Sans';
+  font-weight: 700;
+  color: #fff;
+}
+
+h3 {
+  margin: 0;
+  padding: 0;
+  font-size: 11px;
+  line-height: 11px;
+  font-family: 'Open Sans';
+  font-weight: 400;
+  color: #777;
+}
+
+h4 {
+  margin: 0 0 5px 29px;
+  padding: 0;
+  font-size: 14px;
+  line-height: 14px;
+  font-family: 'Open Sans';
+  font-weight: 700;
+  color: #fff;
+}
+
+h5 {
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+  line-height: 13px;
+  font-family: 'Open Sans';
+  font-weight: 700;
+  color: #6d6d6d;
+}
+
+h6 {
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+  line-height: 13px;
+  font-family: 'Open Sans';
+  font-weight: 700;
+  color: #f0f0f0;
+}
+
+.screen {
+  background-color: #fff;
+  padding: 0;
+  height: 600px;
+  width: 366px;
+  position: absolute;
+  left: 50%;
+	top: 0;
+	transform: translate(-50%, 0);
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  margin: 30px 0;
+}
+
+.header {
+  display: inline-flex;
+  margin: 0 0 40px 0;
+}
+
+input[type=checkbox] {
+  visibility: hidden;
+  margin: 0;
+  padding: 0;
+  z-index: 10;
+}
+
+label.main:before {
+  position: absolute;
+  top: 23px;
+  left: 23px;
+  font-family: FontAwesome;
+  content: '\f0c9';
+  color: #959595;
+  font-size: 16px;
+  line-height: 16px;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease-in;
+}
+
+label.main:hover:before {
+  color: #bbb;
+}
+
+.screen > #magicButton:checked ~ label.main:before {
+  color: #ff564c;
+  transition: all 0.3s ease-in;
+}
+
+.coverImage {
+  background: url('http://imgh.us/powers.jpg') no-repeat;
+  background-size: cover;
+  width: 366px;
+  height: 366px;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: 0% 0%;
+  transition: all 0.3s ease-in;
+}
+
+.screen > #magicButton:checked ~ .coverImage {
+  transform: scale(0.251, 0.251);
+  left: 23px;
+  top: 60px;
+  transition: all 0.3s ease-in;
+  border-radius: 20px;
+}
+
+.search:before {
+  position: absolute;
+  top: 23px;
+  right: 23px;
+  font-family: FontAwesome;
+  content: '\f002';
+  color: #959595;
+  font-size: 16px;
+  line-height: 16px;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease-in;
+}
+
+.search:hover:before {
+  color: #bbb;
+}
+
+.bodyPlayer {
+  position: absolute;
+  top: 366px;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  height: 286px;
+  width: 366px;
+  background: #111;
+  transition: all 0.3s ease-in;
+}
+
+.screen > #magicButton:checked ~ .bodyPlayer {
+  height: 470px;
+  left: 0;
+  top: 180px;
+  transition: all 0.3s ease-in;
+}
+
+.list {
+  border-spacing: 0px 2px;
+  width: 342px;
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: 378px;
+  left: 12px;
+  transform-origin: 0% 0%;
+  transform: scale(0.1, 0.1);
+  transition: all 0.3s ease-in;
+}
+
+.list tr {
+  transform-origin: 0% 50%;
+  height: 50px;
+  text-align: center;
+  background: #1d1d1d;
+  text-indent: 8px;
+}
+
+.list tr:hover {
+  background: #222;
+  cursor: pointer;
+}
+
+.title {
+  width: 215px;
+  text-align: left;
+  text-indent: 15px;
+  transition: all 0.11s ease-in;
+}
+
+.list tr:hover .title {
+  padding-left: 5px;
+  width: 210px;
+  transition: all 0.11s ease-in;
+}
+
+.screen > #magicButton:checked ~ .list {
+  top: 192px;
+  left: 12px;
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1, 1);
+  transition: all 0.3s ease-in;
+}
+
+.screen > #magicButton:checked ~ table tr:nth-child(1) {
+  opacity: 1;
+  animation: harlem 0.3s linear forwards;
+  animation-delay: 0.185s;
+}
+
+.screen > #magicButton:checked ~ table tr:nth-child(2) {
+  animation: harlem 0.3s linear forwards;
+  animation-delay: 0.2s;
+}
+
+.screen > #magicButton:checked ~ table tr:nth-child(3) {
+  animation: harlem 0.3s linear forwards;
+  animation-delay: 0.215s;
+}
+
+.screen > #magicButton:checked ~ table tr:nth-child(4) {
+  animation: harlem 0.3s linear forwards;
+  animation-delay: 0.23s;
+}
+
+.screen > #magicButton:checked ~ table tr:nth-child(5) {
+  animation: harlem 0.3s linear forwards;
+  animation-delay: 0.245s;
+}
+
+.screen > #magicButton:checked ~ table tr:nth-child(6) {
+  animation: harlem 0.3s linear forwards;
+  animation-delay: 0.26s;
+}
+
+.screen > #magicButton:checked ~ table tr:nth-child(7) {
+  animation: harlem 0.3s linear forwards;
+  animation-delay: 0.275s;
+}
+
+.screen > #magicButton:checked ~ table tr:nth-child(8) {
+  animation: harlem 0.3s linear forwards;
+  animation-delay: 0.29s;
+}
+
+.screen > #magicButton:checked ~ table tr:nth-child(9) {
+  animation: harlem 0.3s linear forwards;
+  animation-delay: 0.305s;
+}
+
+label.zmr:before {
+  font-family: FontAwesome;
+  content: "\f08a";
+  color: #777;
+  font-size: 15px;
+  line-height: 15px;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.15s linear;
+}
+
+td > #heart:checked ~ label.zmr:before {
+  content: "\f004";
+  color: #ff564c;
+  transition: all 0.15s linear;
+}
+
+td > #heart1:checked ~ label.zmr:before {
+  content: "\f004";
+  color: #ff564c;
+  transition: all 0.15s linear;
+}
+
+td > #heart2:checked ~ label.zmr:before {
+  content: "\f004";
+  color: #ff564c;
+  transition: all 0.15s linear;
+}
+
+td > #heart3:checked ~ label.zmr:before {
+  content: "\f004";
+  color: #ff564c;
+  transition: all 0.15s linear;
+}
+
+td > #heart4:checked ~ label.zmr:before {
+  content: "\f004";
+  color: #ff564c;
+  transition: all 0.15s linear;
+}
+
+td > #heart5:checked ~ label.zmr:before {
+  content: "\f004";
+  color: #ff564c;
+  transition: all 0.15s linear;
+}
+
+td > #heart6:checked ~ label.zmr:before {
+  content: "\f004";
+  color: #ff564c;
+  transition: all 0.15s linear;
+}
+
+td > #heart7:checked ~ label.zmr:before {
+  content: "\f004";
+  color: #ff564c;
+  transition: all 0.15s linear;
+}
+
+td > #heart8:checked ~ label.zmr:before {
+  content: "\f004";
+  color: #ff564c;
+  transition: all 0.15s linear;
+}
+
+.bar {
+  background: url('http://imgh.us/bar_3.svg') no-repeat;
+  background-size: 100%;
+  width: 320px;
+  height: 21px;
+  position: absolute;
+  top: 407px;
+  left: 23px;
+  transform-origin: 0% 0%;
+  transition: all 0.3s ease-in;
+}
+
+.screen > #magicButton:checked ~ .bar {
+  top: 119px;
+  left: 126px;
+  transform: scale(0.6875, 0.6875);
+  transition: all 0.3s ease-in;
+}
+
+.info {
+  width: 157px;
+  position: absolute;
+  left: 104px;
+  top: 400px;
+  transition: all 0.3s ease-in;
+}
+
+.screen > #magicButton:checked ~ .info {
+  top: 66px;
+  left: 126px;
+  text-align: left;
+  transition: all 0.3s ease-in;
+}
+
+.screen > #magicButton:checked ~ .info h4 {
+  margin-left: 0;
+  font-size: 16px;
+  color: #111111;
+  transition: all 0.3s ease-in;
+}
+
+.player {
+  background: none;
+  text-align: center;
+  font-family: FontAwesome;
+  color: #fff;
+  font-size: 26px;
+  line-height: 26px;
+  width: 216px;
+  height: 35px;
+  position: absolute;
+  bottom: 100px;
+  left: 48%;
+  transform: translate(-50%, 0);
+  z-index: 10;
+  transition: all 0.3s ease-in;
+  border-spacing: 0;
+}
+
+.player td {
+  width: 72px;
+}
+
+.backward:before {
+  content: "\f04a";
+  cursor: pointer;
+  transition: all 0.15s linear;
+}
+
+.play:before {
+  content: "\f04b";
+  cursor: pointer;
+  transition: all 0.15s linear;
+}
+
+.forward:before {
+  content: "\f04e";
+  cursor: pointer;
+  transition: all 0.15s linear;
+}
+
+.backward:hover:before {
+  color: #bbb;
+  transition: all 0.15s linear;
+}
+
+.play:hover:before {
+  color: #bbb;
+  transition: all 0.15s linear;
+}
+
+.forward:hover:before {
+  color: #bbb;
+  transition: all 0.15s linear;
+}
+
+td > #play:checked ~ label.play:before {
+  content: "\f04c";
+  transition: all 0.15s linear;
+}
+
+.screen > #magicButton:checked ~ .player {
+  bottom: 4px;
+  left: -44px;
+  transform: scale(0.45, 0.45);
+  transition: all 0.3s ease-in;
+}
+
+.shadow {
+  background: rgba(17, 17, 17, 0.8);
+  width: 366px;
+  height: 50px;
+  position: absolute;
+  bottom: -12px;
+  left: 0;
+  box-shadow: 0px -15px 40px rgba(17, 17, 17, 0.8);
+}
+
+.footer {
+  background: none;
+  font-family: FontAwesome;
+  color: #6d6d6d;
+  font-size: 15px;
+  line-height: 15px;
+  height: 45px;
+  width: 360px;
+  position: absolute;
+  bottom: 10px;
+  left: 23px;
+  z-index: 20;
+  transition: all 0.15s linear;
+  transition: bottom 0.3s linear;
+}
+
+.love:before {
+  content: "\f08a";
+  cursor: pointer;
+  transition: all 0.15s linear;
+}
+
+.shuffle:before {
+  content: "\f074";
+  cursor: pointer;
+  transition: all 0.15s linear;
+}
+
+.repeat:before {
+  content: "\f01e";
+  cursor: pointer;
+  transition: all 0.15s linear;
+}
+
+.options:before {
+  content: "\f141";
+  cursor: pointer;
+  transition: all 0.15s linear;
+}
+
+.love:hover:before {
+  color: #bbb;
+  transition: all 0.15s linear;
+}
+
+.shuffle:hover:before {
+  color: #bbb;
+  transition: all 0.15s linear;
+}
+
+.repeat:hover:before {
+  color: #bbb;
+  transition: all 0.15s linear;
+}
+
+.options:hover:before {
+  color: #bbb;
+  transition: all 0.15s linear;
+}
+
+
+td > #love:checked ~ label.love:before {
+  content: "\f004";
+  color: #ff564c;
+  transition: all 0.15s linear;
+}
+
+td > #shuffle:checked ~ label.shuffle:before {
+  color: #ff564c;
+  transition: all 0.15s linear;
+}
+
+td > #repeat:checked ~ label.repeat:before {
+  color: #ff564c;
+  transition: all 0.15s linear;
+}
+
+.screen > #magicButton:checked ~ .footer {
+  bottom: -60px;
+  transition: all 0.3s ease-in;
+}
+
+.current {
+  position: absolute;
+  right: 23px;
+  bottom: -60px;
+  transition: all 0.3s ease-in;
+}
+
+.screen > #magicButton:checked ~ .current {
+  bottom: 17px;
+  transition: all 0.3s ease-in;
+}
+
+audio {
+  visibility: hidden;
+}
+
+.container {
+  max-width: 816px;
+  padding: 30px 8px 8px;
+  margin: 60px auto;
+  box-shadow: inset 1px 1px 0px #f1f1f1, 3px 3px 6px 3px #303038;
+  background-color: #e3e3e3;
+  border-radius: 1px 1px 7px 7px;
+}
+.keyboard-row {
+  display: flex;
+}
+.key {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  padding: 3px 2px;
+  height: 30px;
+  margin: 4px;
+  letter-spacing: 0.5px;
+  color: #3a3a3a;
+  background-color: #f7f7f7;
+  flex: 1;
+  box-shadow: inset 0 -2px 0 #aaaaaa, inset 0px 1px 1px -1px #fff, 0px 1px 1px 0px #7a7a7a;
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-size: 14px;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  user-select: none;
+  transition: transform 0.08s ease, background-color 0.08s ease, box-shadow 0.08s ease;
+  cursor: pointer;
+}
+.key:hover {
+  background-color: #fbfbfb;
+}
+.key:active {
+  transform: translateY(1.5px);
+  box-shadow: inset 0 -0.5px 0 #aaaaaa, inset 0px -1px 1px -1px #fff, 0px 0.5px 0.75px 0px #999;
+}
+.key span {
+  display: inline-block;
+  vertical-align: middle;
+}
+.key::before {
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+  content: '';
+}
+.keyboard-row.thin .key {
+  height: 20px;
+}
+.keyboard-row.bottom-row .key {
+  height: 24px;
+}
+@media (min-width: 640px) {
+  .key {
+    height: 48px;
+  }
+  .keyboard-row.thin .key {
+    height: 28px;
+  }
+  .keyboard-row.bottom-row .key {
+    height: 55px;
+  }
+}
+.key.extra-size {
+  flex: 1.25;
+}
+.key.extra-size-two {
+  flex: 1.625;
+}
+.key.double-size {
+  flex: 2.125;
+}
+.key.lowercase {
+  font-size: 11px;
+  text-transform: lowercase;
+}
+.key.function {
+  font-size: 8px;
+  text-align: right;
+}
+.key.function span {
+  vertical-align: bottom;
+}
+.key.lower-right {
+  vertical-align: bottom;
+  text-align: right;
+  padding-right: 5px;
+}
+.key.lower-left {
+  vertical-align: bottom;
+  text-align: left;
+  padding-left: 5px;
+}
+.key.lower-center {
+  vertical-align: bottom;
+}
+.key.space-bar {
+  flex: 7.2;
+}
+.key .lower-row-text {
+  vertical-align: bottom;
+  padding-bottom: 2px;
+}
+.key .absolute-left,
+.key .absolute-right {
+  position: absolute;
+  top: 5px;
+  font-size: 9px;
+}
+.key .absolute-left.icon,
+.key .absolute-right.icon {
+  font-size: 12px;
+}
+.key .absolute-right {
+  right: 5px;
+}
+.key .absolute-left {
+  left: 5px;
+}
+.key .absolute-left.caps-dot {
+  top: 3px;
+  left: 4px;
+}
+.bottom-row .arrows {
+  display: flex;
+  flex: 4;
+  justify-content: justify;
+  align-items: flex-end;
+  padding-bottom: 4px;
+}
+.bottom-row .arrows .up-down {
+  flex: 1.2;
+  height: 54px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+.bottom-row .arrows .up-down .key {
+  margin: 0;
+}
+.bottom-row .arrows .up-down .key:first-child {
+  box-shadow: inset 0 -5px 4px -4px #aaaaaa, inset 0px 1px 1px -1px #fff, 0px 1px 1px 0px #7a7a7a;
+  border-bottom-left-radius: 1px;
+  border-bottom-right-radius: 1px;
+}
+.bottom-row .arrows .up-down .key + .key {
+  border-top-left-radius: 1px;
+  border-top-right-radius: 1px;
+}
+.bottom-row .arrows .key {
+  flex: 1;
+  font-size: 7px;
+  margin: 0 4px;
+  height: 27px;
+  font-family: "Georgia", sans-serif;
+  color: #555;
+}
+/* function row icons */
+.fn-row-icon {
+  background-size: auto 60%;
+  background-position: 50% 45%;
+  background-repeat: no-repeat;
+}
+.eject,
+.lo-bright,
+.hi-bright,
+.expose,
+.tilez,
+.rewind,
+.ffwd,
+.play-pause,
+.mute,
+.lo-vol,
+.hi-vol,
+.eject {
+  background-size: auto 60%;
+  background-position: 50% 45%;
+  background-repeat: no-repeat;
+}
+.eject {
+  background-image: url(//s3-us-west-2.amazonaws.com/s.cdpn.io/8533/apple-icons-01_1.svg);
+}
+.lo-bright {
+  background-image: url(//s3-us-west-2.amazonaws.com/s.cdpn.io/8533/apple-icons-10_1.svg);
+}
+.hi-bright {
+  background-image: url(//s3-us-west-2.amazonaws.com/s.cdpn.io/8533/apple-icons-09_1.svg);
+}
+.expose {
+  background-image: url(//s3-us-west-2.amazonaws.com/s.cdpn.io/8533/apple-icons-08_1.svg);
+}
+.tilez {
+  background-image: url(//s3-us-west-2.amazonaws.com/s.cdpn.io/8533/apple-icons-07_1.svg);
+}
+.rewind {
+  background-image: url(//s3-us-west-2.amazonaws.com/s.cdpn.io/8533/apple-icons-06_1.svg);
+}
+.ffwd {
+  background-image: url(//s3-us-west-2.amazonaws.com/s.cdpn.io/8533/apple-icons-04_1.svg);
+}
+.play-pause {
+  background-image: url(//s3-us-west-2.amazonaws.com/s.cdpn.io/8533/apple-icons-05_1.svg);
+}
+.mute {
+  background-image: url(//s3-us-west-2.amazonaws.com/s.cdpn.io/8533/apple-icons-11.svg);
+}
+.lo-vol {
+  background-image: url(//s3-us-west-2.amazonaws.com/s.cdpn.io/8533/apple-icons-03_1.svg);
+}
+.hi-vol {
+  background-image: url(//s3-us-west-2.amazonaws.com/s.cdpn.io/8533/apple-icons-02_1.svg);
+}
+.eject {
+  background-image: url(//s3-us-west-2.amazonaws.com/s.cdpn.io/8533/apple-icons-01_1.svg);
+}
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: fixed;
+    z-index: 99999;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+  #logout
+{
+  color: #D9E128;
+-webkit-transition: -webkit-transform .3s ease-in-out;
+          transition:         transform .3s ease-in-out;
+}
+#logout:hover
+{
+  color: #9999FF;
+  -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+}
+.aa
+{
+  color: #9999FF;
+}
+.aa:hover
+{
+  color: #D9E128;
+}
+.preloader {
+      margin: 300px auto;
+      width: 70px;
+      height: 30px;
+      text-align: center;
+      font-size: 10px;
+    }
+
+    .preloader > div {
+      background-color: #72c2a1;
+      height: 10px;
+      width: 10px;
+      border-radius: 50%;
+      display: inline-block;
+      
+      -webkit-animation: stretchdelay 0.7s infinite ease-in-out;
+      animation: stretchdelay 0.7s infinite ease-in-out;
+    }
+
+    .preloader .circ2 {
+      -webkit-animation-delay: -0.6s;
+      animation-delay: -0.6s;
+    }
+
+    .preloader .circ3 {
+      -webkit-animation-delay: -0.5s;
+      animation-delay: -0.5s;
+    }
+
+    .preloader .circ4 {
+      -webkit-animation-delay: -0.4s;
+      animation-delay: -0.4s;
+    }
+
+    .preloader .circ5 {
+      -webkit-animation-delay: -0.3s;
+      animation-delay: -0.3s;
+    }
+
+    @-webkit-keyframes stretchdelay {
+      0%, 40%, 100% { -webkit-transform: translateY(-10px) }  
+      20% { -webkit-transform: translateY(-20px) }
+    }
+
+    @keyframes stretchdelay {
+      0%, 40%, 100% { 
+        transform: translateY(-10px);
+        -webkit-transform: translateY(-10px);
+      } 20% {
+        transform: translateY(-20px);
+        -webkit-transform: translateY(-20px);
+      }
+    }
+	</style>
+</head>
+<body onkeypress="myFunction(event)">
+	<!-- PRESS THE MENU BUTTON TO TRIGGER ANIMATION -->
+<!-- PRESS PLAY BUTTON TO LISTEN THE DEMO SONG -->
+
+<!-- As seen on: "https://dribbble.com/shots/2144866-Day-5-Music-Player-Rebound/" -->
+<p style="position: fixed;bottom: 5px;left:5px;color: white;font-family: 'Raleway', sans-serif;"">Made By John b. @2017</p>
+<!-- THANK YOU! -->
+<div class="preloader">
+      <div class="circ1"></div>
+      <div class="circ2"></div>
+      <div class="circ3"></div>
+      <div class="circ4"></div>
+</div>
+<div class="firstScreen" hidden>
+	<div class="w3-center">
+		<h1 style="color:white;font-family: 'Raleway', sans-serif;"><b>Instructions</b></h1>
+		<p style="color:white;font-family: 'Raleway', sans-serif;">Play/pause using Mouse disabled</p>
+	</div>
+
+	<div class="container">
+  
+  <div class="keyboard">
+    <div class="keyboard-row thin">
+      <div class="key lowercase">Esc</div>
+      <div class="key function lo-bright"><span>f1</span></div>
+      <div class="key function hi-bright"><span>f2</span></div>
+      <div class="key function expose"><span>f3</span></div>
+      <div class="key function tilez"><span>f4</span></div>
+      <div class="key function"><span>f5</span></div>
+      <div class="key function"><span>f6</span></div>
+      <div class="key function rewind"><span>f7</span></div>
+      <div class="key function play-pause"><span>f8</span></div>
+      <div class="key function ffwd"><span>f9</span></div>
+      <div class="key function mute"><span>f10</span></div>
+      <div class="key function lo-vol"><span>f11</span></div>
+      <div class="key function hi-vol"><span>f12</span></div>
+      <div class="key eject"></div>
+    </div>
+    <div class="keyboard-row">
+      <div class="key"><span>~<br/>`</span></div>
+      <div class="key"><span>!<br/>1</span></div>
+      <div class="key"><span>@<br/>2</span></div>
+      <div class="key"><span>#<br/>3</span></div>
+      <div class="key"><span>$<br/>4</span></div>
+      <div class="key"><span>%<br/>5</span></div>
+      <div class="key"><span>^<br/>6</span></div>
+      <div class="key"><span>&amp;<br/>7</span></div>
+      <div class="key"><span>*<br/>8</span></div>
+      <div class="key"><span>(<br/>9</span></div>
+      <div class="key"><span>)<br/>0</span></div>
+      <div class="key"><span>_<br/>-</span></div>
+      <div class="key"><span>+<br/>=</span></div>
+      <div class="key extra-size lowercase lower-right"><span class="lower-row-text">delete</span></div>
+    </div>
+    <div class="keyboard-row">
+      <div class="key extra-size lowercase lower-left"><span class="lower-row-text">tab</span></div>
+      <div class="key">Q</div>
+      <div class="key">W</div>
+      <div class="key">E</div>
+      <div class="key">R</div>
+      <div class="key">T</div>
+      <div class="key">Y</div>
+      <div class="key">U</div>
+      <div class="key">I</div>
+      <div class="key">O</div>
+      <div class="key tooltip" style="background-color: #D3CA19;color: white;">P<span class="tooltiptext">Play / Pause </span></div>
+      <div class="key"><span>{<br/>[</span></div>
+      <div class="key"><span>}<br/>]</span></div>
+      <div class="key"><span>|<br/>\</span></div>
+    </div>
+    <div class="keyboard-row">
+      <div class="key lowercase lower-left extra-size-two"><span class="lower-row-text">caps lock</span><span class="absolute-left caps-dot">&bull;</span></div>
+      <div class="key tooltip" style="background-color: #D3CA19;color: white;">A<span class="tooltiptext">Prev Track</span></div>
+      <div class="key">S</div>
+      <div class="key">D</div>
+      <div class="key">F</div>
+      <div class="key">G</div>
+      <div class="key">H</div>
+      <div class="key">J</div>
+      <div class="key">K</div>
+      <div class="key tooltip" style="background-color: #D3CA19;color: white;">L<span class="tooltiptext">Next Track</span></div>
+      <div class="key"><span>:<br/>;</span></div>
+      <div class="key"><span>"<br/>'</span></div>
+      <div class="key extra-size-two lowercase lower-right"><span class="lower-row-text">return</span><span class="absolute-right">enter</span></div>
+    </div>
+    <div class="keyboard-row">
+      <div class="key double-size lowercase lower-left"><span class="lower-row-text">shift</span></div>
+      <div class="key">Z</div>
+      <div class="key">X</div>
+      <div class="key">C</div>
+      <div class="key">V</div>
+      <div class="key">B</div>
+      <div class="key">N</div>
+      <div class="key tooltip" id="m" style="background-color: #D3CA19;color: white;">M <span class="tooltiptext">Mute/Unmute</span></div>
+      <div class="key"><span>&lt;<br/>,</span></div>
+      <div class="key"><span>&gt;<br/>.</span></div>
+      <div class="key"><span>?<br/>/</span></div>
+      <div class="key double-size lowercase lower-right"><span class="lower-row-text">shift</span></div>
+    </div>
+    <script type="text/javascript">
+    	
+    </script>
+    <div class="keyboard-row bottom-row">
+      <div class="key lower-left lowercase"><span class="lower-row-text">fn</span></div>
+      <div class="key lower-left lowercase"><span class="lower-row-text">control</span></div>
+      <div class="key lower-left lowercase"><span class="lower-row-text">option</span><span class="absolute-left">alt</span></div>
+      <div class="key lower-center lowercase extra-size-two"><span class="lower-row-text">command</span><span class="absolute-right icon">&#8984;</span></div>
+      <div class="key space-bar"></div>
+      <div class="key lower-center lowercase extra-size-two"><span class="lower-row-text">command</span><span class="absolute-left icon">&#8984;</span></div>
+      <div class="key lower-right lowercase"><span class="lower-row-text">option</span><span class="absolute-right">alt</span></div>
+      <div class="arrows">
+          <div class="key">&#9668;</div>
+          <div class="up-down">
+            <div class="key">&#9650;</div>
+            <div class="key">&#9660;</div>
+          </div>
+          <div class="key">&#9658;</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="w3-center">
+  	<p style="color: white;font-family: 'Raleway', sans-serif;">I read Instructions</p>
+  <span  onclick="aa()" class="aa"><span class="fa-stack fa-lg">
+                  <i class="fa fa-circle-thin fa-stack-2x "></i>
+                  <i id="logout" class="fa fa-check fa-stack-1x"  ></i>
+                </span></span>
+  
+	</div>
+</div>
+	
+</div>
+<script type="text/javascript">
+	function aa()
+	{
+		$('.screen').fadeIn();
+		myFunction2();
+		$('.firstScreen').fadeOut();
+	}
+</script>
+
+<article class="screen" hidden>
+  <input type="checkbox" value="None" id="magicButton" name="check" />
+  <label class="main" for="magicButton"></label>
+
+  <div class="coverImage"><img src="" id="myImage" style="width: 100%;"></div>
+ 
+  <div class="bodyPlayer"></div>
+
+  <table class="list">
+    				<tr class="song" onclick="my1()">
+     					<td class="nr">
+        				<h5>1<h5></td>
+						<td class="title"><h6>Say Wont let Go<h6></td>
+						<td class="length"><h5>3:30<h5></td>
+						<td><input type="checkbox" id="heart"/><label class="zmr" for="heart"></label></td>
+					</tr>
+				
+					<tr class="song" onclick="my2()">
+						<td class="nr"><h5>2<h5></td>
+						<td class="title"><h6 style="">Congratulations<h6></td>
+						<td class="length"><h5>3:46<h5></td>
+						<td><input type="checkbox" id="heart1" checked /><label class="zmr" for="heart1"></label></td>
+					</tr>
+				
+					<tr class="song" onclick="my3()">
+						<td class="nr"><h5>3<h5></td>
+						<td class="title"><h6>No Type<h6></td>
+						<td class="length"><h5>3:54<h5></td>
+						<td><input type="checkbox" id="heart2"/><label class="zmr" for="heart2"></label></td>
+					</tr>
+				
+					<tr class="song" onclick="my4()">
+						<td class="nr"><h5>4<h5></td>
+						<td class="title"><h6>Americana<h6></td>
+						<td class="length"><h5>3:01<h5></td>
+						<td><input type="checkbox" id="heart3" checked /><label class="zmr" for="heart3"></label></td>
+					</tr>
+					
+					<tr class="song" onclick="my5()">
+						<td class="nr"><h5>5<h5></td>
+						<td class="title"><h6>Demons<h6></td>
+						<td class="length"><h5>2:55<h5></td>
+						<td><input type="checkbox" id="heart4"/><label class="zmr" for="heart4"></label></td>
+					</tr>
+					
+					<tr class="song" onclick="my6()">
+						<td class="nr"><h5>6<h5></td>
+						<td class="title"><h6>Tour Life xox<h6></td>
+						<td class="length"><h5>2:58<h5></td>
+						<td><input type="checkbox" id="heart5"/><label class="zmr" for="heart5"></label></td>
+					</tr>
+					
+					<tr class="song" onclick="my7()">
+						<td class="nr"><h5>7<h5></td>
+						<td class="title"><h6>Scared To be lonely<h6></td>
+						<td class="length"><h5>3:50<h5></td>
+						<td><input type="checkbox" id="heart6"/><label class="zmr" for="heart6"></label></td>
+					</tr>
+					
+				</table>
+				
+				
+				
+				<div class="info">
+					<h4 id="name"></h4>
+					<h3 id="artist"></h3>
+				</div>
+
+				<table class="player">
+					<td><input type="checkbox" id="backward"/ onclick="myFunction1()"><label class="backward" for="backward"></label></td>
+					<td><input type="checkbox" id="play" title="Play"  /><i class="fa fa-pause" id="vvv" ></i></td>
+					<td><input type="checkbox" id="forward"/ onclick="myFunction2()"><label class="forward" for="forward"></label></td>
+				</table>
+				
+				<table class="footer">
+					<td><input type="checkbox" id="love" checked /><span id="demo11"></span></td>
+					<td><input type="checkbox" id="shuffle"/>&nbsp;</td>
+					<td><input type="checkbox" id="repeat" checked />&nbsp;</td>
+					<td ><input type="checkbox" id="options"/><i class="fa fa-volume-up" aria-hidden="true" id="vvv1"></i></td>
+				</table>
+				
+				
+				
+				
+			
+		</article>
+
+
+
+
+<div hidden>
+<button onclick="myFunction1()">prev</button>
+<button onclick="myFunction2()">next</button>
+
+<h2 id="name"></h2>
+<h3 id="artist"></h3>
+<h4 id="song"></h4>
+<img src="" id="myImage" style="width: 100px;height: 100px;">
+<p>Playback position: <span id="demo11"></span></p>
+<br><br><br>
+
+<button onclick="my1()">Rap God</button>
+<button onclick="my2()">Congratulations</button>
+<button onclick="my3()">Notype</button>
+<button onclick="my4()">Americana</button>
+<button onclick="my5()">Demons</button>
+<button onclick="my6()">Low Life</button>
+<button onclick="my7()">Loyal</button>
+<button onclick="my8()">Pegases</button>
+<button onclick="my9()">Say wont let go</button>
+<button onclick="my10()">Tour life</button>
+<br><br>
+<audio  src="" id="myAudio"  controls autoplay></audio>
+<br><br>
+<p>How to modify values in a JSON object using the bracket notation.</p>
+
+<p id="demo"></p>
+</div>
+<script>
+var z=0;
+var myObj, i, x = "";
+myObj = 
+{
+	"cars10": {
+    			"car11":"Tour Life",
+    			"car22":"xox lil",
+    			"car33":"tour.mp3",
+    			"car44":"anvil.jpg"
+  			},
+	"cars9": {
+    			"car11":"Say wont let go",
+    			"car22":"Arthur",
+    			"car33":"say.mp3",
+    			"car44":"key.jpg"
+  			},
+	"cars8": {
+    			"car11":"Pegases",
+    			"car22":"Sae Raymund",
+    			"car33":"pega.mp3",
+    			"car44":"dust.jpg"
+  			},
+	"cars7": {
+    			"car11":"Scared Lonely",
+    			"car22":"Martin Garrix & Dua Lipa",
+    			"car33":"scared.mp3",
+    			"car44":"lonely.jpg"
+  			},
+	"cars6": {
+    			"car11":"Tour Llif3 xo",
+    			"car22":"Lil Uzi Ve -XO Tour Llif3",
+    			"car33":"tour.mp3",
+    			"car44":"xo.jpg"
+  			},
+	"cars5": {
+    			"car11":"Demons (Offical)",
+    			"car22":"Imagine Dragons Night v.",
+    			"car33":"demons.mp3",
+    			"car44":"demon.jpg"
+  			},
+	"cars4": {
+    			"car11":"N. Americana",
+    			"car22":"Halsey - Badland Capitol",
+    			"car33":"americana.mp3",
+    			"car44":"new.jpg"
+  			},
+	"cars3": {
+    			"car11":"No type - Zayn",
+    			"car22":"Zayn Malik/Mic Righteous",
+    			"car33":"notype.mp3",
+    			"car44":"zayn.jpg"
+  			},
+  	"cars2": {
+    			"car11":"Congratulations",
+    			"car22":"Post Malon -QuavoStoney",
+    			"car33":"audio.mp3",
+    			"car44":"post.jpg"
+  			},
+  	"cars": {
+    			"car11":"Say wont let go",
+    			"car22":"James Arthur - Back Edge",
+    			"car33":"say.mp3",
+    			"car44":"say.jpg"
+  			}
+}
+
+var ar = [myObj.cars, myObj.cars2,myObj.cars3,myObj.cars4,myObj.cars5,myObj.cars6,myObj.cars7,myObj.cars8,myObj.cars9,myObj.cars10];
+for (i in ar[0]) {
+    x += ar[0][i] + "<br>";
+}
+for (i in ar[1]) {
+    x += ar[1][i] + "<br>";
+}
+for (i in ar[2]) {
+    x += ar[2][i] + "<br>";
+}
+
+
+
+document.getElementById("demo").innerHTML = x;
+
+function my1()
+{
+	z=0;
+	myFunction2();
+}
+function my2()
+{
+	z=1;
+	myFunction2();
+}
+function my3()
+{
+	z=2;
+	myFunction2();
+}
+function my4()
+{
+	z=3;
+	myFunction2();
+}
+function my5()
+{
+	z=4;
+	myFunction2();
+}
+function my6()
+{
+	z=5;
+	myFunction2();
+}
+function my7()
+{
+	z=6;
+	myFunction2();
+}
+function my8()
+{
+	z=7;
+	myFunction2();
+}
+function my9()
+{
+	z=8;
+	myFunction2();
+}
+function my10()
+{
+	z=9;
+	myFunction2();
+}
+
+
+var aud = document.getElementById("myAudio");
+aud.onended = function() {
+    myFunction2();
+};
+
+
+var vid = document.getElementById("myAudio");
+
+function enableMute() { 
+    vid.muted = true;
+    $('#vvv1').addClass("fa-volume-off");
+    $('#vvv1').removeClass("fa-volume-up");
+} 
+
+function disableMute() { 
+    vid.muted = false;
+    $('#vvv1').removeClass("fa-volume-off");
+    $('#vvv1').addClass("fa-volume-up");
+} 
+
+
+
+
+
+
+
+function myFunction1()
+{
+	if(z==1)
+	{
+		return 0;
+	}
+	z--;
+	var s="";
+	var s1="";
+	var c=0;
+	var name="";
+	var artist="";
+	var song="";
+	var pic="";
+	for (i in ar[z-1])
+	{
+    	s += ar[z-1][i] + "<br>";
+    	if(c==0)
+    	{
+    		name=""+ar[z-1][i];
+    	}
+    	if(c==1)
+    	{
+    		artist=""+ar[z-1][i];
+    	}
+    	if(c==2)
+    	{
+    		song=""+ar[z-1][i];
+    	}
+    	if(c==3)
+    	{
+    		pic=""+ar[z-1][i];
+    	}
+    	c++;
+	}
+	
+	
+	document.getElementById("name").innerHTML = name;
+	document.getElementById("artist").innerHTML = artist;
+	document.getElementById("song").innerHTML = song;
+	document.getElementById('myAudio').src = song;
+	document.getElementById('myImage').src = pic;
+}
+function myFunction2()
+{
+	if(z==7)
+	{
+		return 0;
+	}
+	var s="";
+	var c=0;
+	var name="aj";
+	var artist="na";
+	var song="n";
+	var pic="";
+	for (i in ar[z])
+	{
+
+    	s += ar[z][i] + "<br>";
+    	if(c==0)
+    	{
+    		name=""+ar[z][i];
+    	}
+    	if(c==1)
+    	{
+    		artist=""+ar[z][i];
+    	}
+    	if(c==2)
+    	{
+    		song=""+ar[z][i];
+    	}
+    	if(c==3)
+    	{
+    		pic=""+ar[z][i];
+    	}
+    	c++;
+	}
+	z++;
+	
+	
+	document.getElementById("name").innerHTML = name;
+	document.getElementById("artist").innerHTML = artist;
+	document.getElementById("song").innerHTML = song;
+	document.getElementById('myAudio').src = song;
+	document.getElementById('myImage').src = pic;
+}
+</script>
+<script type="text/javascript">
+	var k=0;
+	var mu=0;
+	function myFunction(event)
+	{
+		var l = event.which;
+		if(l==112)
+		{
+    		if(k==0)
+    		{
+    			myAudio.pause();
+    			$('#vvv').addClass("fa-play");
+				$('#vvv').removeClass("fa-pause");
+    			k++;
+    		}
+    		else
+    		{
+    			myAudio.play();
+    			$('#vvv').addClass("fa-pause");
+				$('#vvv').removeClass("fa-play");
+    			k--;
+    		}
+		}
+		if(l==80)
+		{
+    		if(k==0)
+    		{
+    			myAudio.pause();
+    			$('#vvv').addClass("fa-play");
+				$('#vvv').removeClass("fa-pause");
+    			k++;
+    		}
+    		else
+    		{
+    			myAudio.play();
+    			$('#vvv').addClass("fa-pause");
+				$('#vvv').removeClass("fa-play");
+    			k--;
+    		}
+		}
+		if(l==97)
+		{
+			myFunction1();
+		}
+		if(l==65)
+		{
+			myFunction1();
+		}
+		if (l==76)
+		{
+			myFunction2();
+		}
+		if (l==108)
+		{
+			myFunction2();
+		}
+		if(l==77)
+		{
+    		if(mu==0)
+    		{
+    			enableMute();
+    			mu++;
+    		}
+    		else
+    		{
+    			disableMute();
+    			mu--;
+    		}
+		}
+		if(l==109)
+		{
+    		if(mu==0)
+    		{
+    			enableMute();
+    			mu++;
+    		}
+    		else
+    		{
+    			disableMute();
+    			mu--;
+    		}
+		}
+
+}
+
+
+
+
+
+
+</script>
+<script type="text/javascript">
+	
+</script>
+<script>
+// Get the video element with id="myVideo"
+var vid11 = document.getElementById("myAudio");
+
+// Assign an ontimeupdate event to the video element, and execute a function if the current playback position has changed
+vid11.ontimeupdate = function() {myFunction11()};
+
+function myFunction11() {
+	
+    // Display the current position of the video in a p element with id="demo"
+    if(vid11.currentTime%60 >10)
+    {
+    	document.getElementById("demo11").innerHTML = (Math.floor(vid11.currentTime/60)+":" + Math.floor(vid11.currentTime%60));
+	}
+	else
+	{
+		document.getElementById("demo11").innerHTML = (Math.floor(vid11.currentTime/60)+":0" + Math.floor(vid11.currentTime%60));
+	}
+}
+</script>
+<script type="text/javascript">
+
+// PRESS THE MENU BUTTON TO TRIGGER ANIMATION
+// PRESS PLAY BUTTON TO LISTEN THE DEMO SONG
+
+
+var bb=0;
+var aud = document.getElementById("myAudio");
+function cs()
+{
+
+	if(bb==0)
+	{
+		$('#vvv').addClass("fa-play");
+		$('#vvv').removeClass("fa-pause");
+		aud.pause();
+		bb++;
+	}
+	else
+	{
+		$('#vvv').addClass("fa-pause");
+		$('#vvv').removeClass("fa-play");
+		aud.play();
+		bb--;
+	}
+}
+
+var bb1=0;
+
+var audii = document.getElementById("myAudio");
+function cs1()
+{
+
+	if(bb1==0)
+	{
+		audii.muted = true;
+    $('#vvv1').addClass("fa-volume-off");
+    $('#vvv1').removeClass("fa-volume-up");
+		bb1++;
+	}
+	else
+	{
+		audii.muted = false;
+    $('#vvv1').addClass("fa-volume-up");
+    $('#vvv1').removeClass("fa-volume-off");
+		bb1--;
+	}
+}
+
+</script>
+<script type="text/javascript">
+	window.onload = function() {
+		$('.preloader').fadeOut();
+		$('.firstScreen').fadeIn();};
+</script>
+</body>
+</html>

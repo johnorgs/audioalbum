@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Album -John Besra</title>
+  <link rel="shortcut icon" href="peace.png"/>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+	<audio  src="audio.mp3" id="myAudio"  controls>
+		<p>If you are reading this, it is because your browser does not support the audio element.</p>
+	</audio>
+	<p id="s1"></p>
+	<progress value="0" max="60" id="progressBar"></progress>
+	<audio src="rap.mp3" id="myAudio1" controls>
+		<p>If you are reading this, it is because your browser does not support the audio element.</p>
+	</audio>
+	<p id="s2"></p>
+	<audio src="notype.mp3" id="myAudio2" controls autoplay>
+		<p>If you are reading this, it is because your browser does not support the audio element.</p>
+	</audio>
+	<p id="s3"></p>
+	<script type="text/javascript">
+	window.onload=function()
+      {
+      	var i=0;
+        var myAudio = document.getElementById("myAudio");
+        var myAudio1 = document.getElementById("myAudio1");
+        var myAudio2 = document.getElementById("myAudio2");
+        document.getElementById("s1").innerHTML = myAudio.duration;
+        document.getElementById("s2").innerHTML = myAudio1.duration;
+        document.getElementById("s3").innerHTML = myAudio2.duration;
+      };
+		
+		var timeleft = 60;
+var downloadTimer = setInterval(function(){
+  document.getElementById("progressBar").value = 60 - --timeleft;
+  if(timeleft <= 0)
+    clearInterval(downloadTimer);
+},1000);
+			
+	</script>
+</body>
+</html>
